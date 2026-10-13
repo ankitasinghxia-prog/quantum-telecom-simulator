@@ -1,0 +1,331 @@
+/* ============================================
+   GOOGLE FONTS - MUST BE AT THE TOP
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+/* ============================================
+   TAILWIND DIRECTIVES
+   ============================================ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Smooth transitions for theme */
+  * {
+    transition: background-color 0.3s ease, 
+                color 0.3s ease, 
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+  }
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3B82F6;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2563EB;
+}
+
+/* ============================================
+   QUANTUM PARTICLE BACKGROUND
+   ============================================ */
+
+.quantum-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 50%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.dark .quantum-bg {
+  background: radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+}
+
+.quantum-particle {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.3;
+  animation: float-particle linear infinite;
+}
+
+@keyframes float-particle {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   GLOW EFFECTS
+   ============================================ */
+
+.glow-blue {
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+}
+
+.glow-green {
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+}
+
+.glow-red {
+  box-shadow: 0 0 30px rgba(239, 68, 68, 0.3);
+}
+
+.glow-purple {
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+}
+
+/* ============================================
+   QUANTUM ANIMATIONS
+   ============================================ */
+
+.qubit-0 {
+  background: radial-gradient(circle at 30% 30%, #3B82F6, #1D4ED8);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+.qubit-1 {
+  background: radial-gradient(circle at 30% 30%, #EF4444, #B91C1C);
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+}
+
+.qubit-flying {
+  animation: qubitFly 1.5s ease-in-out forwards;
+}
+
+@keyframes qubitFly {
+  0% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(var(--fly-distance)) scale(0.5);
+  }
+}
+
+/* ============================================
+   ENCRYPTION SCRAMBLE
+   ============================================ */
+
+.scramble-text {
+  animation: scramble 0.6s ease-out;
+}
+
+@keyframes scramble {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+    filter: blur(2px);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(0) scale(1.02);
+    filter: blur(1px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* ============================================
+   STATUS PULSE
+   ============================================ */
+
+.pulse-ring {
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+/* ============================================
+   SKELETON LOADING
+   ============================================ */
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+.dark .skeleton {
+  background: linear-gradient(90deg, #1E293B 25%, #334155 50%, #1E293B 75%);
+  background-size: 200% 100%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+
+.dark body {
+  background-color: #0F172A;
+  color: #F1F5F9;
+}
+
+.dark .bg-white {
+  background-color: #1E293B;
+}
+
+.dark .border-gray-200 {
+  border-color: #334155;
+}
+
+.dark .text-gray-800 {
+  color: #F1F5F9;
+}
+
+.dark .text-gray-600 {
+  color: #94A3B8;
+}
+
+.dark .text-gray-500 {
+  color: #64748B;
+}
+
+.dark .bg-gray-50 {
+  background-color: #0F172A;
+}
+
+.dark .bg-gray-100 {
+  background-color: #1E293B;
+}
+
+.dark .hover\:bg-gray-100:hover {
+  background-color: #334155;
+}
+
+.dark .bg-blue-50 {
+  background-color: #1E3A5F;
+}
+
+.dark .text-blue-600 {
+  color: #60A5FA;
+}
+
+.dark .bg-green-50 {
+  background-color: #064E3B;
+}
+
+.dark .text-green-600 {
+  color: #34D399;
+}
+
+.dark .bg-red-50 {
+  background-color: #7F1D1D;
+}
+
+.dark .text-red-600 {
+  color: #F87171;
+}
+
+.dark .bg-yellow-50 {
+  background-color: #78350F;
+}
+
+.dark .text-yellow-600 {
+  color: #FBBF24;
+}
+
+.dark .shadow-sm {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+.dark .shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 640px) {
+  .card {
+    @apply p-3;
+  }
+  
+  .card-title {
+    @apply text-base;
+  }
+  
+  .btn-primary,
+  .btn-secondary,
+  .btn-danger,
+  .btn-success {
+    @apply px-3 py-1.5 text-sm;
+  }
+}

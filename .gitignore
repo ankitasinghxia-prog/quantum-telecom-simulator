@@ -1,0 +1,30 @@
+# In root folder, create .gitignore file
+echo "# Python
+venv/
+__pycache__/
+*.pyc
+.env
+*.db
+*.sqlite3
+
+# Node.js
+node_modules/
+dist/
+build/
+*.log
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment files
+.env.local
+.env.development
+.env.production
+
+# OS files
+Thumbs.db
+.DS_Store" > .gitignore
